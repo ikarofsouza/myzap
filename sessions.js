@@ -76,10 +76,11 @@ module.exports = class Sessions {
 
         const client = await venom.create(
             sessionName,
-            (base64Qr) => {
+            (base64Qr, asciiQR) => {
                 session.state = "QRCODE";
                 session.qrcode = base64Qr;
                 console.log("new qrcode updated - session.state: " + session.state);
+                console.log("new qrcode terminal " + asciiQR);
             },
             (statusFind) => {
                 session.status = statusFind;
